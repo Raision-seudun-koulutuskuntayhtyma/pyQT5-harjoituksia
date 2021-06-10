@@ -1,4 +1,4 @@
-# SOUND GENERATOR
+# QT5 SOUND GENERATOR 
 
 # Libraries and modules
 
@@ -14,6 +14,8 @@ Form, Window = uic.loadUiType("mainwindow.ui")
 app = QApplication([])
 window = Window()
 form = Form()
+
+# TODO: Create functions for slots
 
 # Setup and show the window
 form.setupUi(window)
