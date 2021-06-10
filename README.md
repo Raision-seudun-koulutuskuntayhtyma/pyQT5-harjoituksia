@@ -11,5 +11,5 @@ Käyttöliittymää tulee voida käyttää sekä näppäimistön että hiiren av
 4. Muiden nuppien arvot muuttuvat nuolinäppäimillä 1:llä ja sivunvaihtonäppäimillä 9:llä.
 5. Kontrollien arvoja voidaan muuttaa hiirellä a) vetämällä, b) klikkaamalla sekä c) rullaa kiertämällä.
 6. Kontrolliem yhteyteen sijoitetaan indikaattori, joka näyttää kontrollin arvon numeerisena.
-7. Kontrollista voi siirtyä seuraavaan kontrolliin sarkainnäppäimen avulla järjestyksessä liukusäädin -> nupit -> painike
-8. Punaisessa 7-segmenttinäytössä näkyy valittu taajuus
+7. Kontrollista voi siirtyä seuraavaan kontrolliin sarkainnäppäimen avulla järjestyksessä liukusäädin -> nupit -> painike.
+8. Punaisessa 7-segmenttinäytössä näkyy valittu taajuus.
