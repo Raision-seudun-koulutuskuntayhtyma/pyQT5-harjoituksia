@@ -64,6 +64,7 @@ class Ui(QtWidgets.QMainWindow):
             print('Taajuuden on oltava vähintään 37 Hz') # Console logging
             # Create a notification dialog
             notification = QtWidgets.QMessageBox()
+            notification.setWindowTitle('Virheellinen taajuus')
             notification.setText('Taajuuden pitää olla vähintään 37 Hz!')
             notification.exec_()
         else: 
