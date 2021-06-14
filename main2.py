@@ -1,10 +1,12 @@
-# SOUND GENERATOR GUI FULLY FUNCTIONAL
+# ---SOUND GENERATOR GUI FULLY FUNCTIONAL---
 
-# Libraries and modules
+# LIBRARIES AND MODULES
 
 from PyQt5 import QtWidgets, uic # QT Libraries
 import sys # For accessing arguments
 import sound # Module for sound creation
+
+# CLASS DEFINITIONS
 
 # Class definition for the main window UI, slots & functions
 class Ui(QtWidgets.QMainWindow):
@@ -12,7 +14,9 @@ class Ui(QtWidgets.QMainWindow):
         super().__init__() # Parent class init
         uic.loadUi("mainwindow.ui", self) # Loads the ui file
 
-        # Control Objects in the UI (inputs)
+        # UI OBJECTS
+
+        # Control Objects in the UI (inputs) 2 ways to create properties
         self.duration = self.durationSlider # Get the slider input object directly by using ui objectname, duration of the sound
         self.thousands = self.findChild(QtWidgets.QDial, 'kiloDial') # Get the dial input object by using pointer to ui objectname, khz part
         self.hundreds = self.findChild(QtWidgets.QDial, 'hundredDial') # Hundreds part
@@ -22,29 +26,56 @@ class Ui(QtWidgets.QMainWindow):
         # LCD indicator object
         self.lcd = self.findChild(QtWidgets.QLCDNumber, 'frequencyLcd') # The big 7 segment display
         
-        # Signals and slots
-        self.playSound.clicked.connect(self.echoConsole) # Connect Button playSound to beep function by using directly ui objectName
+        # SIGNALS AND SLOTS
 
-        # Make the UI visible
-        self.show() 
+        # Connect playSound Button to the beep function by using ui objectName directly, event is clicked
+        self.playSound.clicked.connect(self.beep) 
+        
+        # Connect dials to the big LCD with updateLcd function, event is valueChanged
+        self.thousands.valueChanged.connect(self.updateLcd)
+        self.hundreds.valueChanged.connect(self.updateLcd)
+        self.tens.valueChanged.connect(self.updateLcd)
+        self.ones.valueChanged.connect(self.updateLcd)
+        
+        # MAKE THE UI VISIBLE
+        self.show()
 
+
+    # Numerical values extracted from dials and combined into frequency value (int)
     def frequency(self):
-        # Numerical values extracted from dials and combined into frequency value
-        freqThousands = self.thousands.value() # Get value of the kHz dial and multiply it by 1000
-        freqHundreds = self.hundreds.value() * 100
+        freqThousands = self.thousands.value() * 1000 # Get value of the kHz dial and multiply it by 1000
+        freqHundreds = self.hundreds.value() * 100 
         freqTens = self.tens.value() * 10
         freqOnes = self.ones.value()
         frequencyValue = freqThousands + freqHundreds + freqTens + freqOnes
         return frequencyValue
 
-    # Slot functions
+    
+        
+    # SLOT FUNCTIONS
+
+    # Update the big LCD    
+    def updateLcd(self):
+        self.lcd.display(self.frequency())
+
+    # Create the sound
     def beep(self):
-        sound.create_sound(self.frequencyValue, self.durationValue)       
+        if self.frequency() < 37: # Frequency must be greater than 36 Hz
+            print('Taajuuden on oltava vähintään 37 Hz') # Console logging
+            # Create a notification dialog
+            notification = QtWidgets.QMessageBox()
+            notification.setText('Taajuuden pitää olla vähintään 37 Hz!')
+            notification.exec_()
+        else: 
+            sound.create_sound(self.frequency(), self.duration.value()) 
 
+    # Function for testing extraction of values from slider & dials 
     def echoConsole(self):
-        print('Arvo on ' + str(frequency())) # For testing purposes only
+        print('Taajuus on ' + str(self.frequency()) + ' Hz ja kesto on ' + str(self.duration.value()) + ' s')
+      
 
-# Create the app
+# CREATE AND RUN THE APP
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()
+window.setWindowTitle('Äänigeneraattori')
 app.exec_()
