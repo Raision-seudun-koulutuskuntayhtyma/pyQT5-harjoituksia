@@ -84,7 +84,7 @@ class Ui(QtWidgets.QMainWindow):
             notification.setText('Minimum allowed frequency is 37 Hz!')
             notification.exec_()
 
-            # Set dials ten and ones to 3 and 7 for the minimum frequency
+            # Set dials tens and ones to 3 and 7 for the minimum frequency
             self.tens.setValue(3)
             self.ones.setValue(7)
         else:
@@ -116,5 +116,5 @@ class Ui(QtWidgets.QMainWindow):
 # CREATE AND RUN THE APP
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()
-window.setWindowTitle('Speaker test generator')
+window.setWindowTitle('Speaker test sound generator')
 app.exec_()
