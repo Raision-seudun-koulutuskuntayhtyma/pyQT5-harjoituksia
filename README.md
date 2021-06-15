@@ -1,7 +1,7 @@
 # pyQT5-harjoituksia
 Graafisen käyttöliittymän suunnitteluun ja toteutukseen liittyviä harjoituksia QT Designeria ja Pythonia käyttäen. Harjoituksessa luodaan kuulokkeiden ja mikrofonien testaukseen tarkoitettu sovellus, joka tuottaa äänisignaalin väliltä 1 Hz - 20 999 Hz.
 
-![GUI](https://github.com/Raision-seudun-koulutuskuntayhtyma/pyQT5-harjoituksia/blob/main/ui.png)
+![GUI](https://github.com/Raision-seudun-koulutuskuntayhtyma/pyQT5-harjoituksia/blob/main/python_igCWplmtuH.png)
 
 ## Asiakasvaatimukset
 Käyttöliittymää tulee voida käyttää sekä näppäimistön että hiiren avulla.
@@ -13,3 +13,5 @@ Käyttöliittymää tulee voida käyttää sekä näppäimistön että hiiren av
 6. Kontrolliem yhteyteen sijoitetaan indikaattori, joka näyttää kontrollin arvon numeerisena.
 7. Kontrollista voi siirtyä seuraavaan kontrolliin sarkainnäppäimen avulla järjestyksessä liukusäädin -> nupit -> painike.
 8. Punaisessa 7-segmenttinäytössä näkyy valittu taajuus.
+9. Jos valittu taajuus on alle 37 Hz, saadaan varoitus liian alhaisesta taajuudesta ja taajuudeksi asetetaan automaattisesti 37 Hz
+10. Preset-valikosta pitää voida valita esiasetus, joka muuttaa taajuussäätimien arvoja.
