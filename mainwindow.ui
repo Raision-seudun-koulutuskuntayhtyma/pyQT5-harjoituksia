@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>760</width>
-    <height>487</height>
+    <width>736</width>
+    <height>475</height>
    </rect>
   </property>
   <property name="sizeIncrement">
@@ -23,19 +23,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="tallenna">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>530</y>
-      <width>201</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Tallenna</string>
-    </property>
-   </widget>
    <widget class="QDial" name="kiloDial">
     <property name="geometry">
      <rect>
@@ -389,6 +376,9 @@ border-color: rgb(85, 0, 0);</string>
     <property name="segmentStyle">
      <enum>QLCDNumber::Flat</enum>
     </property>
+    <property name="intValue" stdset="0">
+     <number>1</number>
+    </property>
    </widget>
    <widget class="QPushButton" name="playSound">
     <property name="geometry">
@@ -410,6 +400,12 @@ border-color: rgb(85, 0, 0);</string>
     <property name="text">
      <string>Play Sound</string>
     </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
@@ -429,129 +425,42 @@ border-color: rgb(85, 0, 0);</string>
      <string>Duration (s)</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>390</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>0-20</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>390</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>0-9</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>390</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>0-9</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>390</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>0-9</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>400</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>1-10</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>760</width>
-     <height>22</height>
+     <width>736</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSound_Generator">
     <property name="title">
-     <string>Sound Generator</string>
+     <string>Presets</string>
     </property>
+    <addaction name="action1_kHz"/>
+    <addaction name="action100_Hz"/>
+    <addaction name="action666_Hz"/>
    </widget>
    <addaction name="menuSound_Generator"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action1_kHz">
+   <property name="text">
+    <string>1 kHz</string>
+   </property>
+  </action>
+  <action name="action100_Hz">
+   <property name="text">
+    <string>100 Hz</string>
+   </property>
+  </action>
+  <action name="action666_Hz">
+   <property name="text">
+    <string>666 Hz</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>durationSlider</tabstop>
@@ -560,7 +469,6 @@ border-color: rgb(85, 0, 0);</string>
   <tabstop>tenDial</tabstop>
   <tabstop>oneDial</tabstop>
   <tabstop>playSound</tabstop>
-  <tabstop>tallenna</tabstop>
  </tabstops>
  <resources/>
  <connections>

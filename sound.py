@@ -15,3 +15,7 @@ def create_sound(frequency, duration):
         duration (int): duration in seconds
     """
     winsound.Beep(frequency, duration * 1000)
+
+# Sound for warnings
+def warn_sound():
+    winsound.PlaySound('SystemExclamation', winsound.SND_ALIAS)

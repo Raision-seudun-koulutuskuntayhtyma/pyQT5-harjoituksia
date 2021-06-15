@@ -3,7 +3,9 @@
 # LIBRARIES AND MODULES
 
 from PyQt5 import QtWidgets, uic # QT Libraries
-import sys # For accessing arguments
+import sys
+
+from PyQt5.QtCore import left # For accessing arguments
 import sound # Module for sound creation
 
 # CLASS DEFINITIONS
@@ -37,6 +39,10 @@ class Ui(QtWidgets.QMainWindow):
         self.tens.valueChanged.connect(self.updateLcd)
         self.ones.valueChanged.connect(self.updateLcd)
         
+        # Connect Preset Menu Actions to dial setting funtion. Needs a lambda function to allow passing arguments (max 3)
+        self.action1_kHz.triggered.connect(lambda: self.setDialsToPreset('1000')) # 1 kHz
+        self.action100_Hz.triggered.connect(lambda: self.setDialsToPreset('0100')) # 100 Hz
+        self.action666_Hz.triggered.connect(lambda: self.setDialsToPreset('0666')) # 666 Hz
         # MAKE THE UI VISIBLE
         self.show()
 
@@ -63,12 +69,29 @@ class Ui(QtWidgets.QMainWindow):
         if self.frequency() < 37: # Frequency must be greater than 36 Hz
             print('Taajuuden on oltava vähintään 37 Hz') # Console logging
             # Create a notification dialog
+            sound.warn_sound() # Warning sound
             notification = QtWidgets.QMessageBox()
             notification.setWindowTitle('Virheellinen taajuus')
             notification.setText('Taajuuden pitää olla vähintään 37 Hz!')
             notification.exec_()
+            
+            # Set dials ten and ones to 3 and 7 for the minimum frequency
+            self.tens.setValue(3)
+            self.ones.setValue(7)
         else: 
             sound.create_sound(self.frequency(), self.duration.value()) 
+
+    # Method to set all 4 dials according to a preset
+    def setDialsToPreset(self, presetText):
+        d1 = presetText[0] # First dial (kHz)
+        d2 = presetText[1]
+        d3= presetText[2]
+        d4 = presetText[3] # Last dial (Hz)
+
+        self.thousands.setValue(int(d1))
+        self.hundreds.setValue(int(d2))
+        self.tens.setValue(int(d3))
+        self.ones.setValue(int(d4))
 
     # Function for testing extraction of values from slider & dials 
     def echoConsole(self):
