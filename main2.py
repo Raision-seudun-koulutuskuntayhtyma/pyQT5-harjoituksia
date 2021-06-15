@@ -78,7 +78,7 @@ class Ui(QtWidgets.QMainWindow):
         if self.frequency() < 37:  # Frequency must be greater than 36 Hz
             print('Minimum allowed frequency is 37 Hz')  # Console logging
             # Create a notification dialog (message box)
-            sound.warn_sound()  # Warning sound (causes guite long delay before msg box)
+            sound.warn_sound()  # Warning sound (causes guite long delay before msg box opens)
             notification = QtWidgets.QMessageBox()
             notification.setWindowTitle('Too low frequency')
             notification.setText('Minimum allowed frequency is 37 Hz!')
